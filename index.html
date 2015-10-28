@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DIWire</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <script src="js/jquery.js"></script>
+    <div class="container">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="active"><a href="#help" role="tab" data-toggle="tab">Editor</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <!-- Welcome/help pane -->
+        <div class="tab-pane active" id="help">
+          <div class="form-group">
+<textarea class="form-control" id="bend-input" rows="15">
+UNIT INCH
+REPEAT 4:
+  BEND 90
+  FEED 1
+  END
+</textarea>
+          </div>
+          <button id="bend" class="btn btn-primary">Bend!</button>
+          <script type="text/javascript" src="js/bend.js"></script>
+          <script type="text/javascript">
+            $("#bend").click(function(evt) {
+                // Get the value from the text field
+                text = $("#bend-input").val()
+
+                // Try to compile
+                try {
+                  compiler = new BendCompiler();
+                  gcode = compiler.compile(text);
+                  fabmoDashboard.submitJob(gcode, {filename : 'diwire.nc',
+                                                  name : 'DIWire',
+                                                  description : 'DIWire example bend file' 
+                  });
+                // Notify of error instead of submitting a job, if there was a problem compiling
+                } catch(e) {
+                  fabmoDashboard.notify('error', e);
+                }
+                evt.preventDefault();
+            });
+          </script>
+        </div>
+      </div> 
+    </div>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>
