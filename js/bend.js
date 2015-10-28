@@ -52,8 +52,8 @@ BendCompiler.prototype._parse = function(text) {
 	program = []
 	for(i in lines) {
 		var line = lines[i].trim().toLowerCase();
-		var bend = line.match(/bend\s+(-?\d+(?:\.\d+)?)/);
-		var feed = line.match(/feed\s+(-?\d+(?:\.\d+)?)/);
+		var bend = line.match(/(?:bend|scoo+ch)\s+(-?\d+(?:\.\d+)?)/);
+		var feed = line.match(/(?:feed|oo+ch)\s+(-?\d+(?:\.\d+)?)/);
 		var unit = line.match(/unit\s+((?:inch|inches|mm|millimeter))/)
 		var repeat = line.match(/repeat\s+(\d+)\:/)
 		var end = line.match(/end/)
@@ -114,7 +114,6 @@ BendCompiler.prototype._expand = function(pgm) {
 			if(repeat_stack.length > 0) {
 				line = repeat_stack[0][0];
 				count = repeat_stack[0][1];
-				console.log(count)
 				if(count > 0) {
 					pc = line;
 					repeat_stack[0][1]--;

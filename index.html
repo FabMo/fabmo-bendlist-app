@@ -39,7 +39,7 @@ REPEAT 4:
                 try {
                   compiler = new BendCompiler();
                   gcode = compiler.compile(text);
-                  fabmoDashboard.submitJob(gcode, {filename : 'diwire.nc',
+                  fabmoDashboard.submitJob(gcode, {filename : 'diwire.txt',
                                                   name : 'DIWire',
                                                   description : 'DIWire example bend file' 
                   });
