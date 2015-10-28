@@ -1,10 +1,10 @@
 {
-	"name":"Example App",
+	"name":"Bend List App",
 	"main":"./index.html",
 	"icon":"icon.png",
-	"icon_color":"navy",
+	"icon_color":"red",
 	"version":"0.0.1",
 	"author":"Ryan Sturmer",
-	"website":"http://www.shopbottools.com",
-	"description":"Demo app from the Fabmo developer kit"
+	"website":"http://www.shopbottools.com/",
+	"description":"Demo app for doing bends with a DIWire using FabMo"
 }
